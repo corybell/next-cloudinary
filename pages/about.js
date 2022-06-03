@@ -58,23 +58,28 @@ export default function Home() {
       </Head>
       <Container maxWidth="md">
         <Typography variant='h2'>
-          Home
+          About
         </Typography>
 
         <Toolbar disableGutters sx={{ gap: 1 }}>
-          <Typography>Home</Typography>
+          <Link href='/'>Home</Link>
           <Link href='/masonry'>Masonry</Link>
-          <Link href='/about'>About</Link>
+          <Typography>About</Typography>
           <Box sx={{ flexGrow: 1 }} />
           <FileUpload onFileChange={onFileChange} />
         </Toolbar>
 
-        <Typography>
-          This page uses a list of NextJS Image components.
-          Click the upload button to add more images.
+        <Typography gutterBottom>
+          This example app uses two NextJS API Routes.
         </Typography>
-
-        {renderContent()}
+        <Typography gutterBottom>
+          The search route searches cloudinary and returns images with a specified tag.
+          This is used to fetch the images displayed below.
+        </Typography>
+        <Typography gutterBottom>
+          The upload route uploads a photo to cloudinary.
+          This is used when the Upload button is clicked.
+        </Typography>
       </Container>
     </Box>
   )

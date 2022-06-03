@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import useSWR from 'swr';
 
-import { Container, Toolbar, Typography } from '@mui/material'
+import { Container, ImageList, ImageListItem, Toolbar, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import Image from 'next/image'
 
@@ -12,7 +12,7 @@ import Link from 'components/Link';
 
 const url = '/api/search?tags=blue'
 
-export default function Home() {
+export default function Masonry() {
   const { data, error } = useSWR(url, fetcher)
   const loading = !error && !data
 
@@ -34,17 +34,19 @@ export default function Home() {
     // console.log(images)
 
     return (
-      <Box sx={{ mt: 1 }}>
-        {images.map(image => (
-          <Box key={image.asset_id}>
-            <Image
-              src={image.url}
-              alt={image.filename}
-              width={image.width}
-              height={image.height}
-            />
-          </Box>
-        ))}
+      <Box sx={{ overflowY: 'scroll' }}>
+        <ImageList variant="masonry" cols={3} gap={8}>
+          {images.map((image) => (
+            <ImageListItem key={image.asset_id}>
+              <Image
+                src={image.url}
+                alt={image.filename}
+                width={image.width}
+                height={image.height}
+              />
+            </ImageListItem>
+          ))}
+        </ImageList>
       </Box>
     )
   }
@@ -58,22 +60,22 @@ export default function Home() {
       </Head>
       <Container maxWidth="md">
         <Typography variant='h2'>
-          Home
+          Masonry Layout
         </Typography>
-
+        
         <Toolbar disableGutters sx={{ gap: 1 }}>
-          <Typography>Home</Typography>
-          <Link href='/masonry'>Masonry</Link>
+          <Link href='/'>Home</Link>
+          <Typography>Masonry</Typography>
           <Link href='/about'>About</Link>
           <Box sx={{ flexGrow: 1 }} />
           <FileUpload onFileChange={onFileChange} />
         </Toolbar>
 
         <Typography>
-          This page uses a list of NextJS Image components.
+          This page uses a masonry layout component and NextJS Image components.
           Click the upload button to add more images.
         </Typography>
-
+        
         {renderContent()}
       </Container>
     </Box>
