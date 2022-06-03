@@ -13,12 +13,15 @@ import Link from 'components/Link';
 const url = '/api/search?tags=blue'
 
 export default function Masonry() {
-  const { data, error } = useSWR(url, fetcher)
+  const { data, error, mutate } = useSWR(url, fetcher)
   const loading = !error && !data
 
   const onFileChange = async (e) => {
     const response = await uploadFile(e.target.files[0])
     console.log(response)
+    setTimeout(() => {
+        mutate(url)
+      }, 1000)
   }
 
   const renderContent = () => {
@@ -30,7 +33,7 @@ export default function Masonry() {
       return <p>error...</p>
     }
 
-    const images = data.data.response.resources;
+    const images = data?.data?.response?.resources || [];
     // console.log(images)
 
     return (
