@@ -9,7 +9,7 @@ import FileUpload from 'components/FileUpload';
 import { uploadFile } from 'services/upload';
 import { fetcher } from 'services/http';
 
-const url = 'http://localhost:3000/api/search?tags=blue'
+const url = '/api/search?tags=blue'
 
 export default function Home() {
   const { data, error } = useSWR(url, fetcher)
