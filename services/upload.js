@@ -1,5 +1,5 @@
 
-const url = 'https://api.cloudinary.com/v1_1/drayfpulc/image/upload'
+const url = 'https://api.cloudinary.com/v1_1/caringbridge/image/upload'
 
 export async function uploadFile(file) {
     const formData = new FormData();

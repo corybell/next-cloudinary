@@ -10,7 +10,7 @@ import fetch from 'isomorphic-fetch'
 //     api_secret: 'S9xSexZBch_fk1_-JlLj3R854FQ'
 // });
 
-const url = 'https://api.cloudinary.com/v1_1/drayfpulc/image/upload'
+const url = 'https://api.cloudinary.com/v1_1/caringbridge/image/upload'
 
 const upload = multer({
   storage: multer.diskStorage({

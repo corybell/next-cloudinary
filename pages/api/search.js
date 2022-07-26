@@ -1,7 +1,7 @@
 const cloudinary = require('cloudinary').v2
 
 cloudinary.config({
-    cloud_name: 'drayfpulc',
+    cloud_name: 'caringbridge',
     api_key: '483296116259727',
     api_secret: 'S9xSexZBch_fk1_-JlLj3R854FQ'
 });
